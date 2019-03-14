@@ -9,10 +9,10 @@ import aboutModel from '../models/aboutModel.js'
 export default {
 	init() {
 		MainView.setup(document.querySelector('#main'))
-			.on('@click', e => this.renderArticle(e))
+			.on('@click', e => this.renderArticle(e.detail.dataset.id))
 		ArticleView.setup(document.querySelector('article'))
 		NavbarView.setup(document.querySelector('nav'))
-			.on('@click', e => this.renderNavConent(e))
+			.on('@click', e => this.renderNavConent(e.detail.target.innerText))
 
 		this.renderView()
 	},
@@ -28,8 +28,7 @@ export default {
 		})
 	},
 
-	renderArticle(e) {
-		const id = e.explicitOriginalTarget.dataset.index
+	renderArticle(id) {
 		console.log(tag, 'renderArticle()', id)
 		MainView.hide()
 		this.fetchArticle(id)
@@ -41,10 +40,9 @@ export default {
 		})
 	},
 
-	renderNavConent(e) {
-		const target = e.explicitOriginalTarget.innerText
-		console.log(tag, 'renderNavConent()', target)
-		if (target === '<- HOME') {
+	renderNavConent(name) {
+		console.log(tag, 'renderNavConent()', name)
+		if (name === '<- HOME') {
 			this.renderView()
 			return
 		}

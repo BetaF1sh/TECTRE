@@ -13,7 +13,9 @@ NavbarView.setup = function (el) {
 
 NavbarView.bindClickEvent = function () {
 	this.el.addEventListener('click', e => {
-		this.emit('@click', { e })
+		e.stopPropagation();
+		const target = e.target || e.srcEelement
+		this.emit('@click', { target })
 	})
 }
 
