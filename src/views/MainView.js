@@ -34,7 +34,7 @@ MainView.bindClickEvent = function () {
 		const dataset = target.dataset
 		if (target.dataset.id === undefined) return
 		this.emit('@click', { dataset })
-	}, true)
+	})
 }
 
 export default MainView
