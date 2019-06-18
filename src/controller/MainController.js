@@ -29,7 +29,7 @@ export default {
 	},
 
 	renderArticle(detail) {
-		const id = detail.dataset.id
+		const { id } = detail.dataset
 		console.log(tag, 'renderArticle()', id)
 		MainView.hide()
 		this.fetchArticle(id)
@@ -42,9 +42,9 @@ export default {
 	},
 
 	renderNavConent(detail) {
-		const name = detail.target.innerText
-		console.log(tag, 'renderNavConent()', name)
-		if (name === '<- HOME') {
+		const { innerText } = detail.target
+		console.log(tag, 'renderNavConent()', innerText)
+		if (innerText === '<- HOME') {
 			this.renderView()
 			return
 		}

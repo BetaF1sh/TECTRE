@@ -31,8 +31,8 @@ MainView.getArticlesHTML = function (data) {
 MainView.bindClickEvent = function () {
 	this.el.addEventListener('click', e => {
 		const target = e.target || e.srcElement
-		const dataset = target.dataset
-		if (target.dataset.id === undefined) return
+		const { dataset } = target
+		if (dataset.id === undefined) return
 		this.emit('@click', { dataset })
 	})
 }
